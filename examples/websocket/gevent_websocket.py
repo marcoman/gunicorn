@@ -12,6 +12,7 @@ from socket import error as SocketError
 
 import gevent
 from gunicorn.workers.base_async import ALREADY_HANDLED
+import secrets
 
 logger = logging.getLogger(__name__)
 
@@ -418,7 +419,6 @@ class WebSocket(object):
 
 # demo app
 import os
-import random
 def handle(ws):
     """  This is the websocket handler function.  Note that we
     can dispatch based on path in here, too."""
@@ -431,7 +431,7 @@ def handle(ws):
 
     elif ws.path == '/data':
         for i in range(10000):
-            ws.send("0 %s %s\n" % (i, random.random()))
+            ws.send("0 %s %s\n" % (i, secrets.SystemRandom().random()))
             gevent.sleep(0.1)
 
 wsapp = WebSocketWSGI(handle)
