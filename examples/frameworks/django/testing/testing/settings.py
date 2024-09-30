@@ -170,3 +170,4 @@ LOGGING = {
 }
 
 SOME_VALUE = "test on reload"
+SESSION_COOKIE_SECURE = True
