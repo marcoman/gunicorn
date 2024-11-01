@@ -82,14 +82,18 @@ def fmt_setting(s):
     return "\n".join(out)
 
 
-def issue_role(typ, rawtext, text, lineno, inliner, options={}, content=[]):
+def issue_role(typ, rawtext, text, lineno, inliner, options=None, content=None):
+    options = {} if options is None else options
+    content = [] if content is None else content
     issue = utils.unescape(text)
     text = 'issue ' + issue
     refnode = nodes.reference(text, text, refuri=ISSUE_URI % issue)
     return [refnode], []
 
 
-def pull_request_role(typ, rawtext, text, lineno, inliner, options={}, content=[]):
+def pull_request_role(typ, rawtext, text, lineno, inliner, options=None, content=None):
+    options = {} if options is None else options
+    content = [] if content is None else content
     issue = utils.unescape(text)
     text = 'pull request ' + issue
     refnode = nodes.reference(text, text, refuri=PULL_REQUEST_URI % issue)
