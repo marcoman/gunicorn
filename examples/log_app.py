@@ -11,6 +11,6 @@ def app(environ, start_response):
     start_response("200 OK", [])
     log.debug("Hello Debug!")
     log.info("Hello Info!")
-    log.warn("Hello Warn!")
+    log.warning("Hello Warn!")
     log.error("Hello Error!")
     return [b"Hello World!\n"]
