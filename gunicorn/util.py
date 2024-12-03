@@ -12,7 +12,6 @@ import io
 import logging
 import os
 import pwd
-import random
 import re
 import socket
 import sys
@@ -20,6 +19,7 @@ import textwrap
 import time
 import traceback
 import warnings
+import secrets
 
 try:
     import importlib.metadata as importlib_metadata
@@ -552,9 +552,9 @@ def daemonize(enable_stdio_inheritance=False):
 
 def seed():
     try:
-        random.seed(os.urandom(64))
+        secrets.SystemRandom().seed(os.urandom(64))
     except NotImplementedError:
-        random.seed('%s.%s' % (time.time(), os.getpid()))
+        secrets.SystemRandom().seed('%s.%s' % (time.time(), os.getpid()))
 
 
 def check_is_writable(path):
