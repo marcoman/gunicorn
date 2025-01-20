@@ -5,7 +5,7 @@ import requests
 def child_process(queue):
     while True:
         print(queue.get())
-        requests.get('http://requestb.in/15s95oz1')
+        requests.get('http://requestb.in/15s95oz1', timeout=60)
 
 
 class GunicornSubProcessTestMiddleware:
